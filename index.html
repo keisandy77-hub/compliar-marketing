@@ -1,0 +1,856 @@
+<title>Compliar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2430;
+    --navy-2:#232E3D;
+    --navy-3:#141B24;
+    --cream:#F7F5F0;
+    --cream-2:#EFEBE2;
+    --ink:#1B2430;
+    --muted:#5C6773;
+    --muted-on-navy:#9CA8B8;
+    --line:#E4E0D8;
+    --line-on-navy:#33404F;
+    --orange:#E07B39;
+    --orange-deep:#C4611F;
+    --orange-tint:#FBE9DB;
+    --good:#3F8F5F;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    padding-left:max(16px, env(safe-area-inset-left,0px));
+    padding-right:max(16px, env(safe-area-inset-right,0px));
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald',system-ui,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-weight:700;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0;line-height:1.6;}
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:1120px;margin:0 auto;}
+  .band{padding-block:88px;}
+  .band-tight{padding-block:56px;}
+  @media (max-width:640px){
+    .band{padding-block:56px;}
+    .band-tight{padding-block:40px;}
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:50;
+    background:rgba(27,36,48,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-on-navy);
+  }
+  .nav-inner{
+    max-width:1120px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding-block:16px;
+    gap:16px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:1.15rem;letter-spacing:0.06em;
+    color:#fff;text-decoration:none;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .brand svg{flex:none;}
+  .nav-links{
+    display:flex;gap:28px;align-items:center;
+    list-style:none;margin:0;padding:0;
+  }
+  .nav-links a{
+    color:var(--muted-on-navy);text-decoration:none;font-size:0.92rem;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{display:flex;gap:10px;align-items:center;}
+  @media (max-width:760px){
+    .nav-links{display:none;}
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:12px 22px;
+    border-radius:3px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:0.92rem;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .12s ease, background .15s, border-color .15s, color .15s;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-primary:hover{background:var(--orange-deep);}
+  .btn-ghost-on-navy{background:transparent;color:#fff;border-color:var(--line-on-navy);}
+  .btn-ghost-on-navy:hover{border-color:#fff;}
+  .btn-ghost-on-cream{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-ghost-on-cream:hover{border-color:var(--ink);}
+  .btn-sm{padding:9px 16px;font-size:0.85rem;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 480px at 12% -10%, rgba(224,123,57,0.16), transparent 60%),
+      var(--navy);
+    color:#fff;
+    padding-top:72px;
+    padding-bottom:0;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+    padding-block:56px 0;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--orange);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";width:18px;height:1px;background:var(--orange);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.2vw, 3.9rem);
+    line-height:1.03;
+    color:#fff;
+  }
+  .hero h1 span{color:var(--orange);}
+  .hero-sub{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:1.08rem;
+    color:var(--muted-on-navy);
+  }
+  .hero-ctas{
+    display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;
+  }
+  .standards{
+    margin-top:44px;
+    display:flex;gap:22px;flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;letter-spacing:0.06em;
+    color:var(--muted-on-navy);
+    border-top:1px solid var(--line-on-navy);
+    padding-top:18px;
+  }
+
+  /* ---------- battery calc widget ---------- */
+  .calc-card{
+    background:var(--navy-2);
+    border:1px solid var(--line-on-navy);
+    border-radius:6px;
+    padding:26px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .calc-head{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:6px;
+  }
+  .calc-title{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    font-size:0.95rem;letter-spacing:0.04em;color:#fff;
+  }
+  .calc-badge{
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;
+    color:var(--good);background:rgba(63,143,95,0.15);
+    border:1px solid rgba(63,143,95,0.4);
+    padding:3px 8px;border-radius:20px;letter-spacing:0.04em;
+  }
+  .calc-desc{color:var(--muted-on-navy);font-size:0.85rem;margin-top:6px;margin-bottom:22px;}
+  .calc-row{margin-bottom:18px;}
+  .calc-row label{
+    display:flex;justify-content:space-between;
+    font-size:0.82rem;color:var(--muted-on-navy);margin-bottom:8px;
+  }
+  .calc-row label .val{color:#fff;font-family:'IBM Plex Mono',monospace;}
+  .calc-row input[type=range]{
+    width:100%;accent-color:var(--orange);height:4px;
+  }
+  .calc-result{
+    margin-top:22px;padding-top:20px;border-top:1px solid var(--line-on-navy);
+    display:flex;align-items:baseline;justify-content:space-between;
+  }
+  .calc-result .lbl{font-size:0.8rem;color:var(--muted-on-navy);}
+  .calc-result .out{
+    font-family:'IBM Plex Mono',monospace;font-size:1.9rem;color:var(--orange);font-weight:600;
+  }
+  .calc-result .unit{font-size:0.95rem;color:var(--muted-on-navy);margin-left:4px;}
+  .calc-note{margin-top:14px;font-size:0.72rem;color:var(--muted-on-navy);opacity:0.8;}
+
+  /* ---------- section headers ---------- */
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--orange-deep);}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);color:var(--ink);}
+  .section-head p{margin-top:14px;color:var(--muted);font-size:1.02rem;max-width:56ch;}
+  .section-head.on-navy h2{color:#fff;}
+  .section-head.on-navy p{color:var(--muted-on-navy);}
+  .section-head.on-navy .eyebrow{color:var(--orange);}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* ---------- why band ---------- */
+  .why{background:var(--cream);}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  @media (max-width:840px){.why-grid{grid-template-columns:1fr;}}
+  .why-copy p + p{margin-top:16px;}
+  .why-copy{color:var(--ink);font-size:1.02rem;}
+  .why-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .why-stat{background:var(--cream);padding:22px;}
+  .why-stat .n{font-family:'Oswald',sans-serif;font-size:2rem;color:var(--orange-deep);}
+  .why-stat .l{font-size:0.82rem;color:var(--muted);margin-top:6px;}
+
+  /* ---------- features ---------- */
+  .feature-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+    padding-block:64px;
+    border-top:1px solid var(--line);
+  }
+  .feature-row:first-of-type{border-top:none;}
+  .feature-row.reverse .feat-copy{order:2;}
+  .feature-row.reverse .feat-visual{order:1;}
+  @media (max-width:860px){
+    .feature-row, .feature-row.reverse{grid-template-columns:1fr;gap:32px;}
+    .feature-row.reverse .feat-copy, .feature-row.reverse .feat-visual{order:initial;}
+    .feature-row{padding-block:44px;}
+  }
+  .feat-tag{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--orange-deep);
+    background:var(--orange-tint);padding:4px 10px;border-radius:3px;margin-bottom:16px;
+  }
+  .feat-copy h3{font-size:clamp(1.35rem,2.4vw,1.7rem);color:var(--ink);margin-bottom:14px;}
+  .feat-copy p{color:var(--muted);font-size:1rem;margin-bottom:18px;}
+  .feat-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .feat-list li{
+    display:flex;gap:10px;align-items:flex-start;font-size:0.94rem;color:var(--ink);
+  }
+  .feat-list li svg{flex:none;margin-top:3px;color:var(--good);}
+
+  /* generic mock frame */
+  .mock{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    overflow:hidden;box-shadow:0 24px 48px -28px rgba(27,36,48,0.28);
+  }
+  .mock-bar{
+    display:flex;gap:6px;padding:11px 14px;border-bottom:1px solid var(--line);background:var(--cream-2);
+  }
+  .mock-bar span{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .mock-body{padding:20px;}
+
+  /* calendar mock */
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;}
+  .cal-cell{
+    aspect-ratio:1;border:1px solid var(--line);border-radius:4px;
+    font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);
+    padding:4px;position:relative;background:#fff;
+  }
+  .cal-cell.has-job{background:var(--orange-tint);border-color:#F0C6A4;}
+  .cal-cell .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--orange);
+    position:absolute;bottom:5px;left:5px;
+  }
+  .cal-legend{display:flex;gap:16px;margin-top:14px;font-size:0.72rem;color:var(--muted);}
+  .cal-legend span{display:inline-flex;align-items:center;gap:6px;}
+  .cal-legend i{width:8px;height:8px;border-radius:50%;background:var(--orange);display:inline-block;}
+
+  /* certificate mock */
+  .cert-field{
+    display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);
+    font-size:0.85rem;
+  }
+  .cert-field .k{color:var(--muted);}
+  .cert-field .v{font-family:'IBM Plex Mono',monospace;color:var(--ink);}
+  .cert-result-chip{
+    margin-top:16px;background:var(--navy);color:#fff;border-radius:6px;
+    padding:14px 16px;display:flex;justify-content:space-between;align-items:center;
+  }
+  .cert-result-chip .k{font-size:0.78rem;color:var(--muted-on-navy);}
+  .cert-result-chip .v{font-family:'IBM Plex Mono',monospace;font-size:1.15rem;color:var(--orange);}
+
+  /* quotes mock */
+  .doc-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 0;border-bottom:1px solid var(--line);font-size:0.86rem;
+  }
+  .doc-row:last-child{border-bottom:none;}
+  .doc-tag{
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;padding:3px 8px;border-radius:3px;
+  }
+  .doc-tag.sales{background:#DDEBE1;color:var(--good);}
+  .doc-tag.defect{background:var(--orange-tint);color:var(--orange-deep);}
+  .doc-num{font-family:'IBM Plex Mono',monospace;color:var(--muted);}
+  .doc-amt{font-family:'IBM Plex Mono',monospace;font-weight:600;}
+
+  /* phone mock */
+  .phone{
+    max-width:270px;margin:0 auto;
+    background:var(--navy);border-radius:22px;padding:14px;
+    box-shadow:0 24px 48px -28px rgba(27,36,48,0.4);
+  }
+  .phone-screen{background:#fff;border-radius:14px;padding:16px;}
+  .phone-head{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.04em;color:var(--ink);margin-bottom:3px;}
+  .phone-sub{font-size:0.72rem;color:var(--muted);margin-bottom:14px;}
+  .job-card{
+    border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;
+  }
+  .job-card .t{font-size:0.82rem;font-weight:600;color:var(--ink);}
+  .job-card .a{font-size:0.72rem;color:var(--muted);margin-top:3px;}
+  .job-card .s{
+    display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;
+    padding:2px 7px;border-radius:20px;
+  }
+  .s.pending{background:var(--orange-tint);color:var(--orange-deep);}
+  .s.done{background:#DDEBE1;color:var(--good);}
+
+  /* asset list mock */
+  .asset-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
+  .asset-row:last-child{border-bottom:none;}
+  .asset-icon{
+    width:30px;height:30px;border-radius:6px;background:var(--cream-2);
+    display:flex;align-items:center;justify-content:center;color:var(--orange-deep);flex:none;
+  }
+  .asset-name{font-size:0.85rem;color:var(--ink);}
+  .asset-meta{font-size:0.72rem;color:var(--muted);}
+  .asset-stock{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);}
+
+  /* trust band */
+  .trust{background:var(--navy);color:#fff;}
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-on-navy);border:1px solid var(--line-on-navy);margin-top:8px;}
+  .trust-card{background:var(--navy);padding:28px 26px;}
+  .trust-card svg{color:var(--orange);margin-bottom:14px;}
+  .trust-card h4{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1rem;color:#fff;margin-bottom:8px;letter-spacing:0.02em;}
+  .trust-card p{font-size:0.88rem;color:var(--muted-on-navy);}
+  @media (max-width:760px){.trust-grid{grid-template-columns:1fr;}}
+
+  /* roadmap */
+  .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media (max-width:820px){.roadmap-grid{grid-template-columns:1fr;}}
+  .roadmap-card{
+    border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff;
+  }
+  .roadmap-badge{
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--orange-deep);background:var(--orange-tint);
+    padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:14px;
+  }
+  .roadmap-card h4{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.05rem;color:var(--ink);margin-bottom:8px;}
+  .roadmap-card p{font-size:0.88rem;color:var(--muted);}
+
+  /* pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch;}
+  @media (max-width:900px){.price-grid{grid-template-columns:1fr;}}
+  .price-card{
+    border:1px solid var(--line);border-radius:10px;padding:30px 26px;background:#fff;
+    display:flex;flex-direction:column;
+  }
+  .price-card.featured{
+    border-color:var(--orange);
+    box-shadow:0 24px 48px -28px rgba(224,123,57,0.35);
+    position:relative;
+  }
+  .price-card.featured::before{
+    content:"MOST POPULAR";
+    position:absolute;top:-11px;left:26px;
+    background:var(--orange);color:#fff;font-family:'IBM Plex Mono',monospace;
+    font-size:0.64rem;letter-spacing:0.08em;padding:3px 10px;border-radius:20px;
+  }
+  .price-name{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.15rem;color:var(--ink);}
+  .price-for{font-size:0.85rem;color:var(--muted);margin-top:6px;min-height:38px;}
+  .price-cta-line{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:1.4rem;color:var(--ink);
+    margin-top:20px;padding-top:20px;border-top:1px solid var(--line);
+  }
+  .price-cta-sub{font-size:0.76rem;color:var(--muted);margin-top:2px;}
+  .price-list{list-style:none;margin:20px 0 26px;padding:0;display:flex;flex-direction:column;gap:9px;flex:1;}
+  .price-list li{display:flex;gap:9px;font-size:0.86rem;color:var(--ink);align-items:flex-start;}
+  .price-list li svg{flex:none;margin-top:3px;color:var(--good);}
+  .price-note{
+    text-align:center;color:var(--muted);font-size:0.86rem;margin-top:32px;
+  }
+
+  /* final cta */
+  .final-cta{
+    background:var(--navy-3);color:#fff;text-align:center;
+  }
+  .final-cta h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);}
+  .final-cta p{color:var(--muted-on-navy);margin-top:16px;font-size:1.04rem;}
+  .final-ctas{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap;}
+
+  /* footer */
+  footer{background:var(--navy-3);border-top:1px solid var(--line-on-navy);color:var(--muted-on-navy);}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-block:52px 28px;}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:32px;}}
+  .foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
+  .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted-on-navy);margin-bottom:14px;}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .foot-col a{color:#D7DEE7;text-decoration:none;font-size:0.9rem;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{
+    border-top:1px solid var(--line-on-navy);padding-block:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:0.78rem;font-family:'IBM Plex Mono',monospace;
+  }
+</style>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2L4 5v6.2c0 5.1 3.4 9.4 8 10.8 4.6-1.4 8-5.7 8-10.8V5l-8-3z" fill="#E07B39"/>
+        <path d="M9 12.2l2.1 2.1L15.5 10" stroke="#1B2430" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Compliar
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost-on-navy btn-sm" href="https://id-preview--52078026-37ad-4977-9cb5-472015a4b39e.lovable.app" target="_blank" rel="noopener">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="https://id-preview--52078026-37ad-4977-9cb5-472015a4b39e.lovable.app" target="_blank" rel="noopener">Start free</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Fire &amp; security compliance software</div>
+        <h1>Run your compliance work <span>like the job it actually is.</span></h1>
+        <p class="hero-sub">Compliar is job management built specifically for fire &amp; security contractors — routines, certificates, quotes and invoicing in one place, with a field app your technicians will actually use on site.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://id-preview--52078026-37ad-4977-9cb5-472015a4b39e.lovable.app" target="_blank" rel="noopener">Start free</a>
+          <a class="btn btn-ghost-on-navy" href="mailto:hello@compliar.co.uk?subject=Compliar%20demo%20request">Book a demo</a>
+        </div>
+        <div class="standards">
+          <span>BS 5839-1</span><span>PD 6662</span><span>BS 5266-1</span><span>BS EN 62676</span>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-head">
+          <div class="calc-title">Battery sizing</div>
+          <div class="calc-badge">BS 5839-1:2025 Annex E</div>
+        </div>
+        <div class="calc-desc">Try the calculator built into every Compliar fire alarm certificate.</div>
+
+        <div class="calc-row">
+          <label>Quiescent current <span class="val"><span id="iqVal">180</span> mA</span></label>
+          <input type="range" id="iq" min="20" max="600" step="5" value="180" oninput="calcBattery()">
+        </div>
+        <div class="calc-row">
+          <label>Alarm current <span class="val"><span id="iaVal">1.2</span> A</span></label>
+          <input type="range" id="ia" min="0.2" max="6" step="0.1" value="1.2" oninput="calcBattery()">
+        </div>
+
+        <div class="calc-result">
+          <div class="lbl">Recommended standby battery</div>
+          <div><span class="out" id="sizeOut">12</span><span class="unit">Ah</span></div>
+        </div>
+        <div class="calc-note">(Iq × 24h + Ia × 0.5h) × 1.25 safety margin, rounded to the nearest standard VRLA size. Illustrative — confirm against your own design assumptions.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why band">
+    <div class="wrap why-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <div class="eyebrow">Why Compliar exists</div>
+          <h2>Built by someone who was doing the job, not selling to it.</h2>
+        </div>
+        <div class="why-copy">
+          <p>Most fire &amp; security software is built for procurement teams at large enterprise contractors. Compliar started differently — as a working tool inside a small fire &amp; security company, shaped around how a 4–6 person team actually gets through a week: a technician checking in on site, filling in a real certificate, and a quote or invoice going out the same day.</p>
+          <p>No module you'll never switch on. No licence tiers built around headcount you don't have. Just the parts of the job that take the longest done properly — scheduling, certification, and the paperwork either side of it.</p>
+        </div>
+      </div>
+      <div class="why-stats">
+        <div class="why-stat"><div class="n">11</div><div class="l">certificate field types, incl. auto battery sizing</div></div>
+        <div class="why-stat"><div class="n">2</div><div class="l">quote types — sales &amp; defect — tracked separately</div></div>
+        <div class="why-stat"><div class="n">1</div><div class="l">isolated workspace per company, enforced at the database</div></div>
+        <div class="why-stat"><div class="n">100%</div><div class="l">of the field app usable from a phone on site</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" style="background:var(--cream);">
+    <div class="wrap">
+
+      <div class="section-head" style="padding-top:64px;">
+        <div class="eyebrow">What's inside</div>
+        <h2>Everything from the first booking to the paid invoice.</h2>
+        <p>One system for the whole job cycle, so nothing gets re-typed between a scheduling tool, a certificate PDF and an invoicing spreadsheet.</p>
+      </div>
+
+      <!-- Calendar -->
+      <div class="feature-row">
+        <div class="feat-copy">
+          <span class="feat-tag">Scheduling</span>
+          <h3>See every routine visit before it's due</h3>
+          <p>Day, week and month views of every routine service, tied to the property it's scheduled against — so a maintenance visit never quietly slips past its service interval.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Routine visits scheduled per property, not per technician's memory</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Combined calendar for both office planning and field work</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reschedule and reassign without leaving the job</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="cal-grid" id="calGrid"></div>
+              <div class="cal-legend"><span><i></i> Routine visit scheduled</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificates -->
+      <div class="feature-row reverse" id="certificates">
+        <div class="feat-copy">
+          <span class="feat-tag">Certificates</span>
+          <h3>Certificates that do the maths for you</h3>
+          <p>An 11 field-type certificate engine covering the forms your technicians actually fill in on site — including a built-in BS 5839-1:2025 Annex E battery-sizing calculator, so nobody's reaching for a separate spreadsheet mid-visit.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Template library plus a full issued-certificate history</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto battery sizing from measured quiescent &amp; alarm current</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Clean, read-only print view for the customer's own records</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="cert-field"><span class="k">Panel type</span><span class="v">Twin-loop addressable</span></div>
+              <div class="cert-field"><span class="k">Measured quiescent current</span><span class="v">180 mA</span></div>
+              <div class="cert-field"><span class="k">Measured alarm current</span><span class="v">1.2 A</span></div>
+              <div class="cert-field"><span class="k">Standby duration</span><span class="v">24 h</span></div>
+              <div class="cert-result-chip"><span class="k">CALCULATED BATTERY SIZE</span><span class="v">12 Ah</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quotes/Invoices -->
+      <div class="feature-row">
+        <div class="feat-copy">
+          <span class="feat-tag">Quotes &amp; invoices</span>
+          <h3>Sales work and defects, kept separate</h3>
+          <p>New business and remedial work found on a routine visit run through two distinct quote types, each with its own numbering sequence — so your win-rate reporting on one doesn't get muddied by the other. Invoices carry your bank details and payment terms automatically.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales quotes and defect quotes, tracked and numbered separately</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Print &amp; dispatch straight from the job</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Company bank details and terms pulled in automatically</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">SQ-2026-0091</span><span class="doc-amt">£2,140.00</span></div>
+              <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0034</span><span class="doc-amt">£480.00</span></div>
+              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">SQ-2026-0090</span><span class="doc-amt">£6,750.00</span></div>
+              <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0033</span><span class="doc-amt">£210.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Field app -->
+      <div class="feature-row reverse">
+        <div class="feat-copy">
+          <span class="feat-tag">Field app</span>
+          <h3>Everything a technician needs, on site</h3>
+          <p>Today's jobs, check-in and check-out with geolocation, parts used, billable line items, a required-certificate checklist and technician notes — one simplified mobile view, with none of the admin clutter of the desk side.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Geolocated check-in / check-out on every job</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts used and billable items logged from the van</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Required-certificate checklist, so nothing's forgotten before sign-off</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-head">Today</div>
+              <div class="phone-sub">Tue 22 Sep · 3 jobs</div>
+              <div class="job-card">
+                <div class="t">Riverside Retail Park</div>
+                <div class="a">Fire alarm — annual service</div>
+                <span class="s done">Checked in 08:52</span>
+              </div>
+              <div class="job-card">
+                <div class="t">Northgate Business Centre</div>
+                <div class="a">Intruder alarm — routine test</div>
+                <span class="s pending">09:30 — not started</span>
+              </div>
+              <div class="job-card">
+                <div class="t">The Old Mill Offices</div>
+                <div class="a">Fire extinguisher check</div>
+                <span class="s pending">13:00 — not started</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assets/stock -->
+      <div class="feature-row">
+        <div class="feat-copy">
+          <span class="feat-tag">Assets, stock &amp; settings</span>
+          <h3>The record of what's actually installed</h3>
+          <p>A per-property asset register, parts and warehouse stock levels, and company-wide settings for branding, document numbering and terms — the groundwork every other part of Compliar relies on.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Full equipment register per property</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Parts, warehouses and live stock levels</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Your branding and numbering on every document, out of the box</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="asset-row">
+                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 9-7 10-3.6-1-7-5-7-10V5l7-3z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <div><div class="asset-name">Twin-loop fire panel</div><div class="asset-meta">Riverside Retail Park</div></div>
+                <div class="asset-stock">Installed</div>
+              </div>
+              <div class="asset-row">
+                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <div><div class="asset-name">12Ah VRLA battery (pair)</div><div class="asset-meta">Warehouse — IDES Office</div></div>
+                <div class="asset-stock mono">18 in stock</div>
+              </div>
+              <div class="asset-row">
+                <div class="asset-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+                <div><div class="asset-name">Smoke detector, optical</div><div class="asset-meta">Warehouse — Van 2</div></div>
+                <div class="asset-stock mono">6 in stock</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRUST / SECURITY -->
+  <section class="trust band" id="security">
+    <div class="wrap">
+      <div class="section-head on-navy" style="margin-bottom:8px;">
+        <div class="eyebrow">Security &amp; isolation</div>
+        <h2>Your data. Only your data.</h2>
+        <p>Every company that signs up gets its own isolated workspace, with tenant isolation enforced at the database — not just hidden behind the interface.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 5-3.4 9-7 10-3.6-1-7-5-7-10V5l7-3z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h4>Row-level isolation</h4>
+          <p>Every table is scoped to your organisation at the database layer, so a query simply can't return another company's rows.</p>
+        </div>
+        <div class="trust-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7l8-4 8 4M4 7v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V7" stroke="currentColor" stroke-width="1.8"/></svg>
+          <h4>Role-based access</h4>
+          <p>Desk and field licences carry different permissions, so office staff and technicians each see exactly what their role needs.</p>
+        </div>
+        <div class="trust-card">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.8"/></svg>
+          <h4>Your own workspace</h4>
+          <p>Sign up and you get a private organisation from the first click — nobody else's certificates, quotes or customers are ever in reach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="band" id="roadmap">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">In active development</div>
+        <h2>What's coming next</h2>
+        <p>Compliar ships in scoped passes. Here's what's currently being built out.</p>
+      </div>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="roadmap-badge">Building now</span>
+          <h4>Customer portal</h4>
+          <p>Client-facing login to view their own certificates, defects, assets and log book entries — no more chasing PDFs by email.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-badge">Building now</span>
+          <h4>Digital log book</h4>
+          <p>An optional per-site log book covering the BS 5839 categories that matter most — fire alarm tests, emergency lighting, fire drills and more — replacing the paper logbook in the plant room.</p>
+        </div>
+        <div class="roadmap-card">
+          <span class="roadmap-badge">Planned</span>
+          <h4>Reporting &amp; insights</h4>
+          <p>Compliance and financial reporting across your whole customer base — what's due, what's overdue, and where the revenue is.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="band" id="pricing" style="background:var(--cream-2);">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="eyebrow">Pricing</div>
+        <h2>Priced for the size of team you actually run</h2>
+        <p>Compliar is early — pricing is tailored to your team size rather than a fixed card, so you're never paying for headcount you don't have. Get in touch and we'll put a number on it.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-name">Starter</div>
+          <div class="price-for">Small teams getting off spreadsheets</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar &amp; routine scheduling</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates, incl. battery sizing</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Quotes &amp; invoicing</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 users</li>
+          </ul>
+          <div class="price-cta-line">Get a quote</div>
+          <div class="price-cta-sub">Priced per seat, tailored to you</div>
+          <a class="btn btn-ghost-on-cream" style="margin-top:18px;" href="mailto:hello@compliar.co.uk?subject=Compliar%20Starter%20pricing">Talk to us</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-name">Growth</div>
+          <div class="price-for">Full desk + field operation, unlimited users</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mobile field app with geolocated check-in</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Assets register &amp; stock management</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited desk &amp; field users</li>
+          </ul>
+          <div class="price-cta-line">Get a quote</div>
+          <div class="price-cta-sub">Priced per seat, tailored to you</div>
+          <a class="btn btn-primary" style="margin-top:18px;" href="mailto:hello@compliar.co.uk?subject=Compliar%20Growth%20pricing">Talk to us</a>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Scale</div>
+          <div class="price-for">Multi-site operations with customer-facing needs</div>
+          <ul class="price-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Customer portal, when live</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Digital log book, when live</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+          </ul>
+          <div class="price-cta-line">Get a quote</div>
+          <div class="price-cta-sub">Priced per seat, tailored to you</div>
+          <a class="btn btn-ghost-on-cream" style="margin-top:18px;" href="mailto:hello@compliar.co.uk?subject=Compliar%20Scale%20pricing">Talk to us</a>
+        </div>
+      </div>
+      <p class="price-note">No card required to try it. Compliar is in active development — early customers help shape what ships next.</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta band">
+    <div class="wrap">
+      <h2>Ready to see it running your jobs?</h2>
+      <p>Create your organisation and start scheduling in a couple of minutes — or get in touch if you'd rather we walk you through it first.</p>
+      <div class="final-ctas">
+        <a class="btn btn-primary" href="https://id-preview--52078026-37ad-4977-9cb5-472015a4b39e.lovable.app" target="_blank" rel="noopener">Start free</a>
+        <a class="btn btn-ghost-on-navy" href="mailto:hello@compliar.co.uk?subject=Compliar%20demo%20request">Book a demo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 5v6.2c0 5.1 3.4 9.4 8 10.8 4.6-1.4 8-5.7 8-10.8V5l-8-3z" fill="#E07B39"/></svg>
+        Compliar
+      </div>
+      <p style="max-width:34ch;font-size:0.88rem;color:var(--muted-on-navy);">Job management for fire &amp; security contractors — routines, certificates, quotes and invoicing, built around how the work actually happens.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Get in touch</h5>
+      <ul>
+        <li><a href="mailto:hello@compliar.co.uk">hello@compliar.co.uk</a></li>
+        <li><a href="https://id-preview--52078026-37ad-4977-9cb5-472015a4b39e.lovable.app" target="_blank" rel="noopener">Sign in to Compliar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 COMPLIAR · BUILT IN THE UK</span>
+    <span>BS 5839-1 · PD 6662 · BS 5266-1 · BS EN 62676</span>
+  </div>
+</footer>
+
+<script>
+  function calcBattery(){
+    var iq = parseFloat(document.getElementById('iq').value); // mA
+    var ia = parseFloat(document.getElementById('ia').value); // A
+    document.getElementById('iqVal').textContent = iq;
+    document.getElementById('iaVal').textContent = ia.toFixed(1);
+
+    var iqA = iq / 1000;
+    var ah = ((iqA * 24) + (ia * 0.5)) * 1.25;
+
+    var sizes = [2.1, 3.2, 7, 12, 17, 24, 26, 38, 65];
+    var chosen = sizes[sizes.length - 1];
+    for (var i = 0; i < sizes.length; i++){
+      if (ah <= sizes[i]) { chosen = sizes[i]; break; }
+    }
+    document.getElementById('sizeOut').textContent = chosen;
+  }
+
+  function buildCalendar(){
+    var grid = document.getElementById('calGrid');
+    if(!grid) return;
+    var jobDays = [2, 5, 9, 12, 13, 18, 23, 27];
+    var html = '';
+    for (var d = 1; d <= 30; d++){
+      var hasJob = jobDays.indexOf(d) !== -1;
+      html += '<div class="cal-cell' + (hasJob ? ' has-job' : '') + '">' + d + (hasJob ? '<span class="dot"></span>' : '') + '</div>';
+    }
+    grid.innerHTML = html;
+  }
+
+  calcBattery();
+  buildCalendar();
+</script>
