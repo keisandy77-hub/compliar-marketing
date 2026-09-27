@@ -351,7 +351,7 @@
   @media (max-width:760px){.trust-grid{grid-template-columns:1fr;}}
 
   /* roadmap */
-  .roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
   @media (max-width:820px){.roadmap-grid{grid-template-columns:1fr;}}
   .roadmap-card{
     border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff;
@@ -748,6 +748,11 @@
           <h4>Deeper reporting</h4>
           <p>SLA tracking, technician activity and job profitability — building on the compliance, data-quality and financial reporting already live today.</p>
         </div>
+        <div class="roadmap-card">
+          <span class="roadmap-badge">Coming soon</span>
+          <h4>RAMS builder</h4>
+          <p>Risk assessments &amp; method statements, auto-populated from the site and task, plus ready-made templates for fire and security work.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -757,48 +762,22 @@
     <div class="wrap">
       <div class="section-head center">
         <div class="eyebrow">Pricing</div>
-        <h2>Priced for the size of team you actually run</h2>
-        <p>Compliar is early — pricing is tailored to your team size rather than a fixed card, so you're never paying for headcount you don't have. Every plan starts with a 30-day free trial — no commitment, no card required.</p>
+        <h2>One flat price. No quotes, no surprises.</h2>
+        <p>£25 per active user, per month — no tiers, no seat caps, no calling for a quote. Add people as you grow and the bill grows with you; remove someone and it drops from your next billing cycle, automatically. Every account starts with a 30-day free trial — no card required.</p>
       </div>
-      <div class="price-grid">
+      <div class="price-grid" style="grid-template-columns:1fr;max-width:440px;margin:0 auto;">
         <div class="price-card">
-          <div class="price-name">Starter</div>
-          <div class="price-for">Small teams getting off spreadsheets</div>
+          <div class="price-name">Compliar</div>
+          <div class="price-for">Scheduling, certificates, quoting &amp; invoicing, assets, mobile field app — everything, for every user</div>
           <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Calendar &amp; routine scheduling</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates, incl. battery sizing</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Quotes &amp; invoicing</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 users</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>No seat cap, no tiers — one price per user</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Remove a user and your bill drops next cycle — automatically</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificates, incl. live battery sizing</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>30-day free trial, no card required</li>
           </ul>
-          <div class="price-cta-line">Get a quote</div>
-          <div class="price-cta-sub">Priced per seat, tailored to you</div>
-          <a class="btn btn-ghost-on-cream" style="margin-top:18px;" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20Starter%20pricing">Talk to us</a>
-        </div>
-        <div class="price-card featured">
-          <div class="price-name">Growth</div>
-          <div class="price-for">Full desk + field operation, unlimited users</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Starter</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Mobile field app with geolocated check-in</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Assets register &amp; stock management</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited desk &amp; field users</li>
-          </ul>
-          <div class="price-cta-line">Get a quote</div>
-          <div class="price-cta-sub">Priced per seat, tailored to you</div>
-          <a class="btn btn-primary" style="margin-top:18px;" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20Growth%20pricing">Talk to us</a>
-        </div>
-        <div class="price-card">
-          <div class="price-name">Scale</div>
-          <div class="price-for">Multi-site operations with customer-facing needs</div>
-          <ul class="price-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Growth</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Customer portal &amp; digital log book</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reporting &amp; insights across every site</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
-          </ul>
-          <div class="price-cta-line">Get a quote</div>
-          <div class="price-cta-sub">Priced per seat, tailored to you</div>
-          <a class="btn btn-ghost-on-cream" style="margin-top:18px;" href="mailto:enquiry@compliar.co.uk?subject=Compliar%20Scale%20pricing">Talk to us</a>
+          <div class="price-cta-line">£25<span style="font-size:0.48em;">&nbsp;/user/mo</span></div>
+          <div class="price-cta-sub">+ £649 one-off onboarding &amp; training</div>
+          <a class="btn btn-primary" style="margin-top:18px;" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free trial</a>
         </div>
       </div>
       <p class="price-note">30-day free trial, no commitment, no card required. Compliar is in active development — early customers help shape what ships next.</p>
