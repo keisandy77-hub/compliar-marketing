@@ -396,6 +396,20 @@
     text-align:center;color:var(--muted);font-size:0.86rem;margin-top:32px;
   }
 
+  /* faq */
+  .faq{background:var(--cream-2);}
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    cursor:pointer;padding:20px 2px;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-family:'Oswald',sans-serif;font-size:1.02rem;color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';font-size:1.3rem;color:var(--orange);flex-shrink:0;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{padding:0 2px 20px;color:var(--muted);font-size:0.94rem;max-width:64ch;}
+
   /* final cta */
   .final-cta{
     background:var(--navy-3);color:#fff;text-align:center;
@@ -434,6 +448,7 @@
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#founder">Founder</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
     </ul>
     <div class="nav-cta">
@@ -751,7 +766,7 @@
         <div class="roadmap-card">
           <span class="roadmap-badge">Coming soon</span>
           <h4>RAMS builder</h4>
-          <p>Risk assessments &amp; method statements, auto-populated from the site and task, plus ready-made templates for fire and security work.</p>
+          <p>Risk assessments &amp; method statements, auto-populated from the site and task, plus ready-made templates for fire, security and electrical work.</p>
         </div>
       </div>
     </div>
@@ -777,11 +792,51 @@
           </ul>
           <div class="price-cta-line">£75<span style="font-size:0.48em;">&nbsp;/mo</span></div>
           <div class="price-cta-sub">for your first 3 users, then £25 per extra user/mo</div>
-          <div class="price-cta-sub">+ £649 one-off onboarding &amp; training</div>
+          <div class="price-cta-sub">No onboarding fee — need help migrating or setting up? Quoted on request.</div>
           <a class="btn btn-primary" style="margin-top:18px;" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free trial</a>
         </div>
       </div>
       <p class="price-note">30-day free trial, no commitment, no card required. Compliar is in active development — early customers help shape what ships next.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band faq" id="faq">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions people actually ask</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How much does Compliar cost?</summary>
+          <p>£75 a month covers your first 3 active users, then £25 per user after that — no tiers, no seat caps. You only pay for the users you actually have active, and every account starts with a 30-day free trial, no card required.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there an onboarding or setup fee?</summary>
+          <p>No — there's no fixed onboarding fee on your subscription. Compliar's built to be picked up during your free trial without anyone holding your hand. If you'd rather have help migrating your existing data or getting set up, that's available on request and quoted separately, outside your monthly billing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What disciplines does Compliar cover?</summary>
+          <p>19 disciplines across fire, security and electrical — fire alarm, intruder alarm, CCTV, access control, emergency lighting, electrical installation, EV charging, PAT testing and more, all in one system.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do the certificates comply with British Standards?</summary>
+          <p>Yes. Compliar's certificate templates are built to the relevant British Standards for each discipline — including BS 5839-1 (fire alarms), PD 6662 &amp; BS EN 62676 (intruder alarms &amp; CCTV), BS 5266-1 (emergency lighting) and BS 7671 (electrical installations) — kept up to date as standards are revised.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a contract or minimum commitment?</summary>
+          <p>No. Every account starts with a 30-day free trial, no card required, and you can cancel any time — you're billed monthly for exactly the users you have active.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens to my bill if I remove a user?</summary>
+          <p>It drops automatically from your next billing cycle — no manual adjustments, no mid-cycle refunds to chase up.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is RAMS (risk assessments) available yet?</summary>
+          <p>The RAMS builder is on the roadmap and coming soon — not live yet. See "What's coming next" below.</p>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -815,6 +870,7 @@
         <li><a href="#certificates">Certificates</a></li>
         <li><a href="#founder">Founder</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
       </ul>
     </div>
