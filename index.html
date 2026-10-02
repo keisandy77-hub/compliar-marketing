@@ -351,7 +351,7 @@
   @media (max-width:760px){.trust-grid{grid-template-columns:1fr;}}
 
   /* roadmap */
-  .roadmap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
   @media (max-width:820px){.roadmap-grid{grid-template-columns:1fr;}}
   .roadmap-card{
     border:1px solid var(--line);border-radius:8px;padding:24px;background:#fff;
@@ -538,10 +538,10 @@
       <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Scheduling</span>
-          <h3>See every routine visit before it's due</h3>
-          <p>Day, week and month views of every routine service, tied to the property it's scheduled against — so a maintenance visit never quietly slips past its service interval.</p>
+          <h3>See every maintenance visit before it's due</h3>
+          <p>Day, week and month views of every maintenance plan, tied to the property it's scheduled against — so a visit never quietly slips past its service interval.</p>
           <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Routine visits scheduled per property, not per technician's memory</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Maintenance visits scheduled per property, not per technician's memory</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Combined calendar for both office planning and field work</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Reschedule and reassign without leaving the job</li>
           </ul>
@@ -551,7 +551,7 @@
             <div class="mock-bar"><span></span><span></span><span></span></div>
             <div class="mock-body">
               <div class="cal-grid" id="calGrid"></div>
-              <div class="cal-legend"><span><i></i> Routine visit scheduled</span></div>
+              <div class="cal-legend"><span><i></i> Maintenance visit scheduled</span></div>
             </div>
           </div>
         </div>
@@ -588,7 +588,7 @@
         <div class="feat-copy">
           <span class="feat-tag">Quotes &amp; invoices</span>
           <h3>Sales work and defects, kept separate</h3>
-          <p>New business and remedial work found on a routine visit run through two distinct quote types, each with its own numbering sequence — so your win-rate reporting on one doesn't get muddied by the other. Every quote, invoice and certificate dispatches as a real branded email with the PDF attached — not a pre-filled draft you have to send yourself.</p>
+          <p>New business and remedial work found on a maintenance visit run through two distinct quote types, each with its own numbering sequence — so your win-rate reporting on one doesn't get muddied by the other. Every quote, invoice and certificate dispatches as a real branded email with the PDF attached — not a pre-filled draft you have to send yourself.</p>
           <ul class="feat-list">
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales quotes and defect quotes, tracked and numbered separately</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Real email dispatch straight from the job, PDF attached automatically</li>
@@ -599,9 +599,9 @@
           <div class="mock">
             <div class="mock-bar"><span></span><span></span><span></span></div>
             <div class="mock-body">
-              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">SQ-2026-0091</span><span class="doc-amt">£2,140.00</span></div>
+              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">QUO-2026-0091</span><span class="doc-amt">£2,140.00</span></div>
               <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0034</span><span class="doc-amt">£480.00</span></div>
-              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">SQ-2026-0090</span><span class="doc-amt">£6,750.00</span></div>
+              <div class="doc-row"><span class="doc-tag sales">SALES</span><span class="doc-num">QUO-2026-0090</span><span class="doc-amt">£6,750.00</span></div>
               <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">DQ-2026-0033</span><span class="doc-amt">£210.00</span></div>
             </div>
           </div>
@@ -688,8 +688,8 @@
           <h3>What's due, what's overdue, and where the revenue is</h3>
           <p>Compliance status and data-quality checks across your whole customer base, plus a financial view — revenue trend, outstanding invoices, win rate and your top customers by revenue — without exporting anything to a spreadsheet first.</p>
           <ul class="feat-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Compliance status — overdue, due-soon and on-track routines, at a glance</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Data-quality checks — properties with no routine, no assets or no contract</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Compliance status — overdue, due-soon and on-track maintenance plans, at a glance</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Data-quality checks — properties with no maintenance plan, no assets or no contract</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Revenue trend, outstanding invoices and your top customers by revenue</li>
           </ul>
         </div>
@@ -697,9 +697,9 @@
           <div class="mock">
             <div class="mock-bar"><span></span><span></span><span></span></div>
             <div class="mock-body">
-              <div class="cert-field"><span class="k">Overdue routines</span><span class="v">3</span></div>
+              <div class="cert-field"><span class="k">Overdue maintenance plans</span><span class="v">3</span></div>
               <div class="cert-field"><span class="k">Due within 14 days</span><span class="v">11</span></div>
-              <div class="cert-field"><span class="k">Properties with no routine set</span><span class="v">2</span></div>
+              <div class="cert-field"><span class="k">Properties with no maintenance plan set</span><span class="v">2</span></div>
               <div class="cert-result-chip"><span class="k">REVENUE, LAST 30 DAYS</span><span class="v">£18,420</span></div>
             </div>
           </div>
@@ -725,6 +725,31 @@
               <div class="doc-row"><span class="doc-tag sales">LIVE</span><span class="doc-num">Riverside Retail Park</span><span class="doc-amt">2 certs</span></div>
               <div class="doc-row"><span class="doc-tag defect">DEFECT</span><span class="doc-num">Northgate Business Centre</span><span class="doc-amt">1 open</span></div>
               <div class="doc-row"><span class="doc-tag sales">LIVE</span><span class="doc-num">The Old Mill Offices</span><span class="doc-amt">Log book</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RAMS -->
+      <div class="feature-row reverse">
+        <div class="feat-copy">
+          <span class="feat-tag">RAMS</span>
+          <h3>Risk assessments without starting from a blank page</h3>
+          <p>Create a RAMS straight from a job and it pulls in hazards and a method statement from ready-made templates covering every discipline Compliar supports — or start from a blank RAMS for anything bespoke. Signed off on site and issued as a PDF.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Task-linked creation, auto-populated from the site and job</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Ready-made templates across every discipline, or build one from scratch</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Editable hazards, electronic sign-off and a printable PDF</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="doc-row"><span class="doc-tag defect">HIGH</span><span class="doc-num">Working at height — extinguisher servicing</span></div>
+              <div class="doc-row"><span class="doc-tag defect">HIGH</span><span class="doc-num">Lone working — out-of-hours call-out</span></div>
+              <div class="doc-row"><span class="doc-tag sales">LOW</span><span class="doc-num">Manual handling — panel replacement</span></div>
+              <div class="doc-row"><span class="doc-tag sales">LOW</span><span class="doc-num">Occupied site — public access areas</span></div>
             </div>
           </div>
         </div>
@@ -763,11 +788,6 @@
           <h4>Deeper reporting</h4>
           <p>SLA tracking, technician activity and job profitability — building on the compliance, data-quality and financial reporting already live today.</p>
         </div>
-        <div class="roadmap-card">
-          <span class="roadmap-badge">Coming soon</span>
-          <h4>RAMS builder</h4>
-          <p>Risk assessments &amp; method statements, auto-populated from the site and task, plus ready-made templates for fire, security and electrical work.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -792,7 +812,7 @@
           </ul>
           <div class="price-cta-line">£100<span style="font-size:0.48em;">&nbsp;/mo</span></div>
           <div class="price-cta-sub">for your first 3 users, then £30 per extra user/mo</div>
-          <div class="price-cta-sub">No onboarding fee — need help migrating or setting up? Quoted on request.</div>
+          <div class="price-cta-sub">Optional onboarding: 10 hours of hands-on setup &amp; support, direct with our founder — £649 flat.</div>
           <a class="btn btn-primary" style="margin-top:18px;" href="https://app.compliar.co.uk" target="_blank" rel="noopener">Start free trial</a>
         </div>
       </div>
@@ -814,7 +834,7 @@
         </details>
         <details class="faq-item">
           <summary>Is there an onboarding or setup fee?</summary>
-          <p>No — there's no fixed onboarding fee on your subscription. Compliar's built to be picked up during your free trial without anyone holding your hand. If you'd rather have help migrating your existing data or getting set up, that's available on request and quoted separately, outside your monthly billing.</p>
+          <p>There's no fee built into your subscription — most teams pick Compliar up themselves during the 30-day free trial. If you'd rather have it done for you, 10 hours of one-to-one onboarding and support is available for a flat £649: migrating your existing data, setting up certificate templates, and training your team, worked directly with our founder.</p>
         </details>
         <details class="faq-item">
           <summary>What disciplines does Compliar cover?</summary>
@@ -834,7 +854,7 @@
         </details>
         <details class="faq-item">
           <summary>Is RAMS (risk assessments) available yet?</summary>
-          <p>The RAMS builder is on the roadmap and coming soon — not live yet. See "What's coming next" below.</p>
+          <p>Yes — RAMS is live. Create one straight from a job and it pulls in hazards and a method statement from ready-made templates across every discipline, or start from a blank RAMS for anything bespoke. Each one is signed off and issued as a PDF.</p>
         </details>
       </div>
     </div>
