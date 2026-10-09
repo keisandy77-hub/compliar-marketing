@@ -371,6 +371,20 @@
   .asset-meta{font-size:0.72rem;color:var(--muted);}
   .asset-stock{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--muted);}
 
+  /* comparison table */
+  .cmp-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:8px;}
+  .cmp{width:100%;border-collapse:collapse;min-width:760px;font-size:0.9rem;}
+  .cmp th,.cmp td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;}
+  .cmp thead th{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:0.9rem;letter-spacing:0.03em;color:var(--ink);background:var(--cream);}
+  .cmp tbody th{font-weight:600;color:var(--ink);width:18%;}
+  .cmp .us{background:var(--orange-tint);}
+  .cmp thead th.us{color:var(--orange-deep);}
+  .cmp td{color:var(--muted);}
+  .cmp td.us{color:var(--ink);font-weight:500;}
+  .cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:none;}
+  .cmp-note{font-size:0.8rem;color:var(--muted);margin-top:14px;max-width:80ch;margin-left:auto;margin-right:auto;text-align:center;}
+  .cmp-note a{color:var(--orange-deep);}
+
   /* site compliance lights */
   .tl{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:10px;vertical-align:-1px;box-shadow:0 0 0 3px rgba(27,36,48,0.06);}
   .tl.red{background:#C0392B;}
@@ -484,6 +498,7 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#compare">Compare</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#roadmap">Roadmap</a></li>
@@ -594,8 +609,33 @@
         </div>
       </div>
 
+      <!-- Trades & disciplines -->
+      <div class="feature-row reverse">
+        <div class="feat-copy">
+          <span class="feat-tag">Trades &amp; disciplines</span>
+          <h3>Only the trades and disciplines you actually do</h3>
+          <p>Tell Compliar which trades you cover — fire protection, electrical, security — then switch off the individual disciplines and job types you don't service, such as aspirating, risers or suppression. Compliar hides the forms, job templates and equipment options that don't apply, on the desk and in the field.</p>
+          <ul class="feat-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Switch each trade on or off for your company</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Turn off individual disciplines (11 in fire protection alone) and the lines of work you don't run</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>One-click presets, such as core systems only, to get started fast</li>
+          </ul>
+        </div>
+        <div class="feat-visual">
+          <div class="mock">
+            <div class="mock-bar"><span></span><span></span><span></span></div>
+            <div class="mock-body">
+              <div class="doc-row"><span class="doc-tag sales">ON</span><span class="doc-num">Fire alarm</span><span class="doc-amt">BS 5839-1</span></div>
+              <div class="doc-row"><span class="doc-tag sales">ON</span><span class="doc-num">Emergency lighting</span><span class="doc-amt">BS 5266-1</span></div>
+              <div class="doc-row"><span class="doc-tag defect">OFF</span><span class="doc-num">Aspirating</span><span class="doc-amt">EN 54-20</span></div>
+              <div class="doc-row"><span class="doc-tag defect">OFF</span><span class="doc-num">Dry / wet risers</span><span class="doc-amt">BS 9990</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Certificates -->
-      <div class="feature-row reverse" id="certificates">
+      <div class="feature-row" id="certificates">
         <div class="feat-copy">
           <span class="feat-tag">Certificates</span>
           <h3>Certificates that do the maths for you</h3>
@@ -621,7 +661,7 @@
       </div>
 
       <!-- Site compliance -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">Site compliance</span>
           <h3>Every site, red, amber or green — at a glance</h3>
@@ -645,7 +685,7 @@
       </div>
 
       <!-- Quotes/Invoices -->
-      <div class="feature-row reverse">
+      <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Quotes &amp; invoices</span>
           <h3>Sales work and defects, kept separate</h3>
@@ -670,7 +710,7 @@
       </div>
 
       <!-- Job documents -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">Job documents</span>
           <h3>Everything from the visit, in one pack</h3>
@@ -696,7 +736,7 @@
       </div>
 
       <!-- Field app -->
-      <div class="feature-row reverse">
+      <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Field app</span>
           <h3>Everything a technician needs, on site</h3>
@@ -733,7 +773,7 @@
       </div>
 
       <!-- Defects -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">Defects</span>
           <h3>From failed asset to fixed, without re-typing</h3>
@@ -758,7 +798,7 @@
       </div>
 
       <!-- Job costing -->
-      <div class="feature-row reverse">
+      <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Job costing</span>
           <h3>Know what every job really earned</h3>
@@ -783,7 +823,7 @@
       </div>
 
       <!-- Projects &amp; tenders -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">Projects &amp; tenders</span>
           <h3>Price a whole project, area by area</h3>
@@ -808,7 +848,7 @@
       </div>
 
       <!-- Assets/stock -->
-      <div class="feature-row reverse">
+      <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Assets, stock &amp; settings</span>
           <h3>The record of what's actually installed</h3>
@@ -844,7 +884,7 @@
       </div>
 
       <!-- Reporting -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">Reporting &amp; insights</span>
           <h3>What's due, what's overdue, and where the revenue is</h3>
@@ -869,7 +909,7 @@
       </div>
 
       <!-- Customer portal -->
-      <div class="feature-row reverse">
+      <div class="feature-row">
         <div class="feat-copy">
           <span class="feat-tag">Customer portal</span>
           <h3>No more chasing PDFs by email</h3>
@@ -893,7 +933,7 @@
       </div>
 
       <!-- RAMS -->
-      <div class="feature-row">
+      <div class="feature-row reverse">
         <div class="feat-copy">
           <span class="feat-tag">RAMS</span>
           <h3>Risk assessments without starting from a blank page</h3>
@@ -917,6 +957,33 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="band" id="compare" style="background:#fff;">
+    <div class="wrap">
+      <div class="section-head center">
+        <div class="eyebrow">How Compliar compares</div>
+        <h2>Straight answers, side by side.</h2>
+        <p>Compared using what three leading field-service platforms publish on their own websites, checked on 9 October 2026. Where a vendor doesn't say, we say so rather than guess.</p>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th></th><th class="us">Compliar</th><th>Fire &amp; security specialist</th><th>Multi-trade platform A</th><th>Multi-trade platform B</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Built for</th><td class="us">Fire, security &amp; electrical contractors</td><td>Fire protection and security businesses</td><td>30+ trades, including fire &amp; security</td><td>Fire protection and other trades</td></tr>
+          <tr><th scope="row">Price published</th><td class="us">Yes — £105 + VAT a month</td><td>No — quote on request</td><td>Entry plan from £45 per user a month, billed annually</td><td>No — request pricing</td></tr>
+          <tr><th scope="row">Cost for a team of 5</th><td class="us">£175 + VAT a month, billed monthly</td><td>Quote on request</td><td>From £225 a month, billed annually (their example)</td><td>Quote on request</td></tr>
+          <tr><th scope="row">Free trial</th><td class="us">30 days, no card</td><td>Not stated</td><td>Yes on the entry plan, no card</td><td>Not stated (demo offered)</td></tr>
+          <tr><th scope="row">Minimum term</th><td class="us">None — billed monthly, cancel any time</td><td>No lock-in, billed monthly</td><td>"Most customers commit to 24 or 36 months"</td><td>Not stated</td></tr>
+          <tr><th scope="row">Setup fee</th><td class="us">Optional: £649 + VAT for 10 hours with the person who built it</td><td>Not stated</td><td>"In some instances there will be a fee"</td><td>Not stated</td></tr>
+          <tr><th scope="row">Quoting and customer portal</th><td class="us">Yes</td><td>Yes</td><td>Yes</td><td>Quoting yes; portal not listed on their fire page</td></tr>
+          <tr><th scope="row">Field app</th><td class="us">Runs in the phone's browser — no app-store download and no offline mode yet</td><td>iOS and Android apps, with offline mode</td><td>Mobile app for engineers</td><td>Mobile app</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cmp-note">Based on each platform's public pricing and product pages when checked on 9 October 2026; "not stated" means the page didn't say. Prices and terms change, so check before you decide. We keep our sources on file — if anything here is out of date or unfair, email <a href="mailto:enquiry@compliar.co.uk">enquiry@compliar.co.uk</a> and we'll correct it.</p>
     </div>
   </section>
 
@@ -1051,6 +1118,7 @@
       <ul>
         <li><a href="#features">Features</a></li>
         <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#compare">Compare</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
