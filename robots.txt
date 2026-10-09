@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://compliar.co.uk/sitemap.xml
