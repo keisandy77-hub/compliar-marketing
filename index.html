@@ -472,8 +472,9 @@
 
   /* footer */
   footer{background:var(--navy-3);border-top:1px solid var(--line-on-navy);color:var(--muted-on-navy);}
-  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-block:52px 28px;}
-  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:32px;}}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-block:52px 28px;}
+  @media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.foot-grid{grid-template-columns:1fr;gap:32px;}}
   .foot-brand{display:flex;align-items:center;gap:10px;color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
   .foot-col h5{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted-on-navy);margin-bottom:14px;}
   .foot-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
@@ -534,7 +535,7 @@
           <div class="calc-title">Battery sizing</div>
           <div class="calc-badge">BS 5839-1:2025 Annex E</div>
         </div>
-        <div class="calc-desc">Try the calculator built into every Compliar fire alarm certificate.</div>
+        <div class="calc-desc">Try the calculator built into every Compliar fire alarm certificate. <a href="/fire-alarm-battery-calculator/" style="color:var(--orange);">Full calculator</a></div>
 
         <div class="calc-row">
           <label>Quiescent current <span class="val"><span id="iqVal">180</span> mA</span></label>
@@ -645,6 +646,7 @@
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto battery sizing and fire-risk scoring, calculated as you fill the form</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Clean, read-only print view and a full issued-certificate history</li>
           </ul>
+          <p style="margin-top:18px;font-size:0.92rem;">See the full certificate sets: <a href="/fire-alarm-certificate-software/" style="color:var(--orange-deep);">fire alarm</a> and <a href="/eicr-and-electrical-certificate-software/" style="color:var(--orange-deep);">electrical (EICR)</a>.</p>
         </div>
         <div class="feat-visual">
           <div class="mock">
@@ -1122,6 +1124,14 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Guides &amp; tools</h5>
+      <ul>
+        <li><a href="/fire-alarm-battery-calculator/">Fire alarm battery calculator</a></li>
+        <li><a href="/fire-alarm-certificate-software/">Fire alarm certificate software</a></li>
+        <li><a href="/eicr-and-electrical-certificate-software/">EICR &amp; electrical certificates</a></li>
       </ul>
     </div>
     <div class="foot-col">
